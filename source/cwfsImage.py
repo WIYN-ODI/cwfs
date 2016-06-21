@@ -60,7 +60,9 @@ class cwfsImage(object):
             if self.image.shape[0] != self.image.shape[1]:
                 raise(nonSquareImageError)
             if self.image.shape[0] % 2 == 1:
-                raise(oddNumPixError)
+                self.image = self.image[:-1,:-1]
+                self.sizeinPix = self.image.shape[0]
+                #raise(oddNumPixError)
         except nonSquareImageError:
             print('%s image filename = %s ' % (type, filename))
             print('%s image size = (%d, %d)' % (
